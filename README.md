@@ -39,8 +39,8 @@ Follow these steps to run the project from scratch.
 ### 1. Clone and environment
 
 ```bash
-git clone <repository-url>
-cd ML_project
+git clone https://github.com/fiazhasan/AI_ML_Project.git
+cd AI_ML_Project
 
 # Virtual environment (recommended)
 python -m venv venv
@@ -73,12 +73,14 @@ If you used Colab, copy `dog_breed_output/best_model.pth` to this path. You can 
 ### 4. Run inference
 
 **Local (development):**
+
 ```bash
 python -m src.api.main
 ```
 Open **http://localhost:8000** for the demo UI, or **http://localhost:8000/docs** for the API.
 
 **Docker (see next section):**
+
 ```bash
 docker-compose up --build
 ```
@@ -103,8 +105,8 @@ After you run the API and open **http://localhost:8000**, the flow is:
 
 ## Project Structure: Folders and Files
 
-```
-ML_project/
+```text
+AI_ML_Project/
 ├── README.md
 ├── requirements.txt
 ├── config.yaml
@@ -652,5 +654,3 @@ To use a different model path, set **`inference.model_path`** in **`config.yaml`
 - PyTorch team
 - FastAPI developers
 - EfficientNet paper authors
-#   M L _ p r o j e c t _ f i n a l  
- 
