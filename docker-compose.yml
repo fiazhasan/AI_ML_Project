@@ -1,0 +1,25 @@
+# Dog Breed Classification API — run inference in a container.
+# Requires models/efficientnet/best_model.pth on the host (mounted into container).
+
+version: "3.8"
+
+services:
+  dog-classifier-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: dog-classifier-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./models:/app/models:ro   # Read-only: load trained model from host
+      - ./logs:/app/logs          # Persist logs on host
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
